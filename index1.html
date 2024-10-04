@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Kubwa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #FF5733;
+        }
+        .countdown {
+            font-size: 48px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Football Match Countdown!</h1>
+    <div class="countdown" id="countdown">77</div>
+    <script>
+        function banterCountdown() {
+            let countdown = 77; // Countdown from 77 seconds
+            const goals = [
+                { minute: 3, scorer: "Brennan Johnson", comment: "3 minutes in and already a disaster for United!" },
+                { minute: 47, scorer: "Dejan", comment: "Dejan scores! Looks like United's defense is still napping!" },
+                { minute: 77, scorer: "Dominic", comment: "Dominic seals the deal! United's hopes are officially crushed!" }
+            ];
+
+            const countdownElement = document.getElementById("countdown");
+
+            const interval = setInterval(() => {
+                countdownElement.textContent = countdown;
+
+                // Check if a goal is scored at this countdown mark
+                const goal = goals.find(g => g.minute === countdown);
+                if (goal) {
+                    countdownElement.textContent += `\nGoal! ${goal.scorer} scored in the ${goal.minute} minute! ${goal.comment}`;
+                }
+
+                countdown--;
+
+                if (countdown < 0) {
+                    clearInterval(interval);
+                    countdownElement.textContent = "Time's up! Final score: 3-0! Looks like United's season is as bright as a dark alley!";
+                }
+            }, 1000);
+        }
+
+        banterCountdown(); // Start the countdown
+    </script>
+</body>
+</html>
